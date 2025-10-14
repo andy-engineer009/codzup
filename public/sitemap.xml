@@ -5,8 +5,11 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   
   <!-- Homepage - Single Page Application -->
+  <!-- IMPORTANT: Make sure this URL matches EXACTLY with your Google Search Console property -->
+  <!-- If your GSC property is https://codzup.com (no www), remove the www below -->
+  <!-- If your GSC property is https://www.codzup.com (with www), keep as is -->
   <url>
-    <loc>https://www.codzup.com/</loc>
+    <loc>https://www.codzup.com</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
