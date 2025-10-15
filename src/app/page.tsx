@@ -155,8 +155,60 @@ export default function Home() {
     }
   ];
 
+  // Generate FAQ JSON-LD structured data
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  // Generate Reviews JSON-LD structured data
+  const reviewsJsonLd = testimonials.map(testimonial => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": testimonial.rating,
+      "bestRating": 5,
+      "worstRating": 1
+    },
+    "author": {
+      "@type": "Person",
+      "name": testimonial.name,
+      "jobTitle": testimonial.role
+    },
+    "reviewBody": testimonial.content,
+    "itemReviewed": {
+      "@type": "Organization",
+      "name": "CodzUp",
+      "url": "https://codzup.space"
+    }
+  }));
+
   return (
     <>
+      {/* JSON-LD Structured Data for FAQ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      
+      {/* JSON-LD Structured Data for Reviews */}
+      {reviewsJsonLd.map((review, index) => (
+        <script
+          key={`review-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(review) }}
+        />
+      ))}
+      
       <Navigation />
       
       <main className="min-h-screen bg-white">
@@ -393,11 +445,19 @@ export default function Home() {
                       <FaStar key={i} className="text-secondary text-lg md:text-xl" aria-hidden="true" />
                     ))}
                   </div>
-                  <meta itemProp="ratingValue" content={testimonial.rating.toString()} />
+                  <div itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
+                    <meta itemProp="ratingValue" content={testimonial.rating.toString()} />
+                    <meta itemProp="bestRating" content="5" />
+                    <meta itemProp="worstRating" content="1" />
+                  </div>
                   <p className="text-gray-700 mb-6 leading-relaxed italic" itemProp="reviewBody">&ldquo;{testimonial.content}&rdquo;</p>
                   <div itemProp="author" itemScope itemType="https://schema.org/Person">
                     <div className="font-bold text-gray-900" itemProp="name">{testimonial.name}</div>
                     <div className="text-sm text-gray-600" itemProp="jobTitle">{testimonial.role}</div>
+                  </div>
+                  <div itemProp="itemReviewed" itemScope itemType="https://schema.org/Organization">
+                    <meta itemProp="name" content="CodzUp" />
+                    <meta itemProp="url" content="https://codzup.space" />
                   </div>
                 </article>
               ))}
@@ -437,11 +497,14 @@ export default function Home() {
                       aria-hidden="true"
                     />
                   </button>
-                  {openFAQ === index && (
-                    <div className="px-6 md:px-8 pb-5 md:pb-6 text-gray-600 leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                      <p itemProp="text">{faq.answer}</p>
-                    </div>
-                  )}
+                  <div 
+                    className={`px-6 md:px-8 pb-5 md:pb-6 text-gray-600 leading-relaxed ${openFAQ === index ? '' : 'hidden'}`}
+                    itemScope 
+                    itemProp="acceptedAnswer" 
+                    itemType="https://schema.org/Answer"
+                  >
+                    <p itemProp="text">{faq.answer}</p>
+                  </div>
                 </article>
               ))}
             </div>
