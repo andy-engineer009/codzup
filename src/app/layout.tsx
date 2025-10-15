@@ -33,6 +33,11 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: '/assets/fav.svg',
+    shortcut: '/assets/fav.svg',
+    apple: '/assets/fav.svg',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
