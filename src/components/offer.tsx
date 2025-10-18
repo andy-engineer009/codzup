@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Offer() {
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(true); 
+    
 
     const handleClose = (e: React.MouseEvent) => {
         e.stopPropagation();
