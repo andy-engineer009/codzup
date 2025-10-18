@@ -18,6 +18,7 @@ import {
 import { SiReact, SiNodedotjs, SiTypescript, SiMongodb, SiAmazon, SiDocker, SiNextdotjs, SiMysql, SiPostgresql, SiVuedotjs, SiAngular } from 'react-icons/si';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import Offer from '@/components/offer';
 
 export default function Home() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -545,6 +546,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <Offer />
     </>
   );
 }
