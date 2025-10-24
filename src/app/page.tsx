@@ -234,9 +234,9 @@ export default function Home() {
             <article className="text-center max-w-4xl mx-auto">
               {/* Main Headline */}
               <h1 className="text-[40px] leading-[63px] font-[700] md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight">
-                We build fast,
-                <span className="text-secondary"> modern websites,</span> 
-                <span className="text-white"> mobile apps</span> 
+                We Build Fast,
+                <span className="text-secondary"> Modern Websites,</span> 
+                <span className="text-white"> Mobile Apps</span> 
                 {/* <span className="text-white block"> small businesses</span> */}
               </h1>
 
