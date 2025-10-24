@@ -22,10 +22,10 @@ export default function Offer() {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed bottom-[88px] left-[10px] z-[1000] w-[200px] h-[200px]">
+        <div className="fixed bottom-[10px] left-[10px] z-[1000] w-[200px] h-[200px]">
             <div className="relative cursor-pointer" onClick={handleOfferClick}>
                 <Image 
-                    src="/assets/offer.jpeg" 
+                    src="/assets/offer.jpg" 
                     alt="Offer" 
                     width={200} 
                     height={200} 
